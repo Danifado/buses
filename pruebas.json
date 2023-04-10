@@ -1,0 +1,29 @@
+{
+    "bodys": [    
+    {
+        "placa": "ABC123",
+        "marca": "Toyota",
+        "modelo": "Corolla",
+        "sillas": [
+          {"estaOcupado": false},
+          {"estaOcupado": true},
+          {"estaOcupado": false},
+          {"estaOcupado": false},
+          {"estaOcupado": true}
+        ],
+        "ruta": {
+          "nombre": "Ruta 1",
+          "paradas": ["Parada 1", "Parada 2", "Parada 3"]
+        }
+      },
+      "Se usa en update_silla",
+      {
+        "estaOcupado": true
+      }   
+    ],
+    "urls": [
+        "localhost:3000/api/bus",
+        "http://localhost:3000/api/update_silla/64339aeeee3c31799993ebaf/64339aeeee3c31799993ebb0",
+        "http://localhost:3000/api/update_silla/:idBus/:idSilla"
+    ]
+}
