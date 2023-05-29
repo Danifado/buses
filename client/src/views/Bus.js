@@ -33,7 +33,8 @@ function Bus() {
   if (busInfo.data) {
     sillasList = busInfo.data.sillas;
     content = (
-      <div >
+      <div className='text-center'>
+        <h3 >Ruta: Bogota - Chia</h3>
         <div className='justify-items-center justify-center grid grid-cols-3 gap-1 w-full'></div>
             <div>
                 <Timer tiempoRestante={busInfo.data.tiempoRestante}/>
@@ -72,7 +73,7 @@ function Bus() {
         <br/>
 
         <div>
-            <Silla sillas={sillasList} />
+            <Silla tieneSobrepeso={busInfo.data.tieneSobrepeso} sillas={sillasList} />
         </div>
         <svg display="none" viewBox="1 1 100000 1">
             <symbol id="available" viewBox="0 0 100 100" >

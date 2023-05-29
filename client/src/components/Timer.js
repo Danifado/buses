@@ -13,7 +13,7 @@ function Timer({ tiempoRestante }) {
 
       if (remainingTime <= 0) {
         clearInterval(interval);
-        setTimeRemaining('Arriving Soon!');
+        setTimeRemaining(["00", "00", "00"]);
       } else {
         const days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
         const hours = Math.floor(

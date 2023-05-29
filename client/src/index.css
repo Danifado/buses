@@ -63,10 +63,16 @@ div.legend p svg {
   padding-bottom: 10vw;
   margin-left: 10vw;
   margin-right: 10vw;
-  border: 5px solid rgba(0, 0, 0, 0.54); /* Color y grosor del borde */
   border-radius: 10vw; /* Controla la curvatura de las esquinas */
+  border: 5px solid rgba(0, 0, 0, 0.54); /* Color y grosor del borde */
   overflow: hidden; /* Oculta cualquier contenido que se salga del área del bus */
 }
+  .sobrepeso {
+    border: 5px solid #b83f3f; /* Color y grosor del borde */
+  }
+  .notsobrepeso {
+    border: 5px solid rgba(0, 0, 0, 0.54); /* Color y grosor del borde */
+  }
   .silla {
     margin: .5em;
     height: 50px;

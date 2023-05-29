@@ -7,11 +7,10 @@ function Silla(sillas) {
   if (Array.isArray(sillas.sillas)) {
     console.log("ASDASDASDSAD");
     content = (
-        <div className="flex justify-center busBorder">
+        <div className={`busBorder flex justify-center  ${sillas.tieneSobrepeso ? 'sobrepeso': 'not-sobrepeso'}`}>
 
             <div className="justify-items-center justify-center grid grid-cols-2 gap-1 w-3/4">
                     {sillas.sillas.map((silla) => (
-                        
                         <div className={`silla ${silla.isActive ? 'active-seat' : 'inactive-seat'} ${silla.estaOcupado ? 'used-seat' : 'unused-seat'}`} key={silla._id}>
                         </div>
                     ))}
