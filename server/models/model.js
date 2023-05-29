@@ -4,16 +4,9 @@ const SillaSchema = new mongoose.Schema({
     estaOcupado: {
       type: Boolean,
       required: true
-    }
-  });
-  
-  const RouteSchema = new mongoose.Schema({
-    nombre: {
-      type: String,
-      required: true
     },
-    paradas: {
-      type: [String],
+    isActive: {
+      type: Boolean,
       required: true
     }
   });
@@ -23,20 +16,19 @@ const SillaSchema = new mongoose.Schema({
       type: String,
       required: true
     },
-    marca: {
-      type: String,
-      required: true
+
+    tieneSobrepeso: {
+      type: Boolean,
+      required: true 
     },
-    modelo: {
-      type: String,
-      required: true
-    },
+
     sillas: {
       type: [SillaSchema],
       required: true
     },
-    ruta: {
-      type: RouteSchema,
+    
+    tiempoRestante: {
+      type: Date,
       required: true
     }
   });

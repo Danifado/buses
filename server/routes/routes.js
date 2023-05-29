@@ -3,16 +3,34 @@ const Model = require('../models/model');
 const router = express.Router()
 
 
+
+// Ruta GET /bus/:bus_id
+router.get('/busInfo/:bus_id', async (req, res) => {
+    try {
+      const bus_id = req.params.bus_id;
+  
+      const bus = await Model.findById(bus_id);
+  
+      if (!bus) {
+        return res.status(404).json({ message: 'Autobús no encontrado' });
+      }
+  
+      res.json(bus);
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  });
+
+  
 //Post create bus Method
-router.post('/bus', async (req, res) => {
+router.post('/createBus', async (req, res) => {
     const bus = new Model({
-      numero: req.body.numero,
-      placa: req.body.placa,
-      marca: req.body.marca,
-      modelo: req.body.modelo,
-      sillas: req.body.sillas,
-      ruta: req.body.ruta
+        placa: req.body.placa,
+        tieneSobrepeso: req.body.tieneSobrepeso,
+        sillas: req.body.sillas,
+        tiempoRestante: req.body.tiempoRestante
     });
+
     try {
       const dataToSave = await bus.save();
       res.status(200).json(dataToSave);
@@ -20,6 +38,25 @@ router.post('/bus', async (req, res) => {
       res.status(400).json({ message: error.message });
     }
 });
+
+// Actualiza si tiene sobrepeso un bus
+router.post('/update_tiene_sobrepeso/:bus_id', async (req, res) => {
+    try {
+      const bus_id = req.params.bus_id;
+      const tieneSobrepeso = req.body.tieneSobrepeso;
+  
+      const updatedBus = await Model.findByIdAndUpdate(
+        bus_id,
+        { tieneSobrepeso: tieneSobrepeso },
+        { new: true }
+      );
+  
+      res.send(updatedBus);
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  });
+  
 
 // Update silla by ID
 router.patch('/update_silla/:bus_id/:silla_id', async (req, res) => {

@@ -5,11 +5,11 @@
         "marca": "Toyota",
         "modelo": "Corolla",
         "sillas": [
-          {"estaOcupado": false},
-          {"estaOcupado": true},
-          {"estaOcupado": false},
-          {"estaOcupado": false},
-          {"estaOcupado": true}
+          {"estaOcupado": false, "isActive": true},
+          {"estaOcupado": true, "isActive": true},
+          {"estaOcupado": false, "isActive": false},
+          {"estaOcupado": false, "isActive": false},
+          {"estaOcupado": true, "isActive": false}
         ],
         "ruta": {
           "nombre": "Ruta 1",
@@ -18,7 +18,8 @@
       },
       "Se usa en update_silla",
       {
-        "estaOcupado": true
+        "estaOcupado": true,
+        "isActive": true
       }   
     ],
     "urls": [
