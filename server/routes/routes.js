@@ -3,8 +3,8 @@ const Model = require('../models/model');
 const router = express.Router()
 
 
-// Ruta POST /update_tiempo_restante/:bus_id
-router.post('/update_tiempo_restante/:bus_id', async (req, res) => {
+// Ruta PATCH /update_tiempo_restante/:bus_id
+router.patch('/update_tiempo_restante/:bus_id', async (req, res) => {
     try {
         const bus_id = req.params.bus_id;
         const tiempoRestanteEnMinutos = req.body.tiempoRestanteEnMinutos;
@@ -16,7 +16,7 @@ router.post('/update_tiempo_restante/:bus_id', async (req, res) => {
     }
 
     const fechaActual = new Date();
-    const tiempoRestanteEnMS = fechaActual.getTime() + (tiempoRestanteEnMinutos * 60000); // Convertir minutos a milisegundos y sumar al tiempo actual
+    const tiempoRestanteEnMS = fechaActual.getTime() + (tiempoRestanteEnMinutos * 60000) - 18000000; // Convertir minutos a milisegundos y sumar al tiempo actual
     const nuevaFecha = new Date(tiempoRestanteEnMS);
 
     // console.log((tiempoRestanteEnMinutos * 60000), "\n",fechaActual, "\n", tiempoRestanteEnMS, "\n",  nuevaFecha);
