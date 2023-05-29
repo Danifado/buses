@@ -1,13 +1,112 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 10px solid #f3f3f3; /* Light grey */
+  border-top: 10px solid #383636; /* Black */
+  border-radius: 50%;
+  animation: spinner 1.5s linear infinite;
+}
+/* display the legend items side by side */
+div.legend {
+  display: flex;
+  margin: 1.25rem 0;
+}
+/* display the text right next to the icons */
+div.legend p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* more whitespae around the legend items than between the items and the respective icon */
+  margin: 0 0.35rem;
+}
+div.legend span {
+  color: hsl(0, 0%, 75%);
+  letter-spacing: 0.05rem;
+  font-weight: 700;
+  font-size: 1rem;
+}
+/* resize the icons and color them with the appropriate hues */
+div.legend p svg {
+  width: 25px;
+  height: 25px;
+  margin-right: 0.2rem;
+  border-radius: 50%;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.available {
+  color: #51b83f;
 }
+
+.reserved {
+  color: #717171;
+}
+
+.selected {
+  color: #e86868;
+}
+
+.busBorder {
+  position: relative;
+  padding-top: 10vw;
+  padding-bottom: 10vw;
+  margin-left: 10vw;
+  margin-right: 10vw;
+  border: 5px solid rgba(0, 0, 0, 0.54); /* Color y grosor del borde */
+  border-radius: 10vw; /* Controla la curvatura de las esquinas */
+  overflow: hidden; /* Oculta cualquier contenido que se salga del área del bus */
+}
+  .silla {
+    margin: .5em;
+    height: 50px;
+    width: 50px;
+    border-radius: 15%;
+  }
+
+    .unused-seat {
+      background-color: #51b83f;
+    }
+
+    .used-seat {
+      background-color: #b83f3f;
+    }
+    
+    .inactive-seat {
+      background-color: #555;
+    }
+
+.timer-cont {
+  margin-left: 5vw;
+  margin-right: 5vw;
+}
+.timer-group{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+  background-color: #7171716a;
+  border-radius: 20px;
+}
+  .timer-group .value {
+    /* background-color: #fff; */
+    color: #222;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 8px;
+    padding-bottom: 0px;
+  }
+  .timer-group .unit {
+    font-size:  13px;
+  }
