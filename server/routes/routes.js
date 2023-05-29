@@ -3,6 +3,32 @@ const Model = require('../models/model');
 const router = express.Router()
 
 
+// Ruta POST /update_tiempo_restante/:bus_id
+router.post('/update_tiempo_restante/:bus_id', async (req, res) => {
+    try {
+        const bus_id = req.params.bus_id;
+        const tiempoRestanteEnMinutos = req.body.tiempoRestanteEnMinutos;
+
+        const bus = await Model.findById(bus_id);
+
+        if (!bus) {
+        return res.status(404).json({ message: 'Autobús no encontrado' });
+    }
+
+    const fechaActual = new Date();
+    const tiempoRestanteEnMS = fechaActual.getTime() + (tiempoRestanteEnMinutos * 60000); // Convertir minutos a milisegundos y sumar al tiempo actual
+    const nuevaFecha = new Date(tiempoRestanteEnMS);
+
+    // console.log((tiempoRestanteEnMinutos * 60000), "\n",fechaActual, "\n", tiempoRestanteEnMS, "\n",  nuevaFecha);
+    bus.tiempoRestante = nuevaFecha;
+
+    const updatedBus = await bus.save();
+        res.send(updatedBus);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+  });
+  
 
 // Ruta GET /bus/:bus_id
 router.get('/busInfo/:bus_id', async (req, res) => {
@@ -39,8 +65,8 @@ router.post('/createBus', async (req, res) => {
     }
 });
 
-// Actualiza si tiene sobrepeso un bus
-router.post('/update_tiene_sobrepeso/:bus_id', async (req, res) => {
+// Ruta PATCH /update_tiene_sobrepeso/:bus_id
+router.patch('/update_tiene_sobrepeso/:bus_id', async (req, res) => {
     try {
       const bus_id = req.params.bus_id;
       const tieneSobrepeso = req.body.tieneSobrepeso;
@@ -55,7 +81,7 @@ router.post('/update_tiene_sobrepeso/:bus_id', async (req, res) => {
     } catch (error) {
       res.status(400).json({ message: error.message });
     }
-  });
+});  
   
 
 // Update silla by ID
